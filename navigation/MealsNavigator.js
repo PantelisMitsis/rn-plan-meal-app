@@ -1,19 +1,20 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
-import CategoriesScreen from '../screens/CategoriesScreen';
-import CategoryMealsScreen from '../screens/CategoryMealsScreen';
-import MealDetailScreen from '../screens/MealDetailScreen';
 import { NavigationContainer } from '@react-navigation/native';
 
+import CategoriesScreen, { categoriesScreenOptions } from '../screens/CategoriesScreen';
+import CategoryMealsScreen, { categoryMealScreenOptions } from '../screens/CategoryMealsScreen';
+import MealDetailScreen from '../screens/MealDetailScreen';
 
-const Stack = createNativeStackNavigator()
+
+
+const MealStackNavigator = createNativeStackNavigator()
 
 const MealsNavigator = props => {
     return <NavigationContainer>
-        <Stack.Navigator initialRouteName= "Categories">
-            <Stack.Screen name="Categories" component={CategoriesScreen} />
-            <Stack.Screen name="CategoryMeals" component={CategoryMealsScreen} />
-        </Stack.Navigator>
+        <MealStackNavigator.Navigator initialRouteName="Categories">
+            <MealStackNavigator.Screen name="Categories" component={CategoriesScreen} options={categoriesScreenOptions} />
+            <MealStackNavigator.Screen name="CategoryMeals" component={CategoryMealsScreen} options={categoryMealScreenOptions} />
+        </MealStackNavigator.Navigator>
     </NavigationContainer>
 };
 
