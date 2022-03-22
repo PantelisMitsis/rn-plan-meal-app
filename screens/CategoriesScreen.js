@@ -1,11 +1,11 @@
 import React from 'react';
-import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
+import { StyleSheet, FlatList } from 'react-native';
 
 import { CATEGORIES } from '../data/dummy-data';
 import CategoryGridTile from '../components/CategoryGridTile';
 
 
-const CategoriesScreen = props => {
+function CategoriesScreen () {
 
     const renderGridItem = (itemData) => {
         return (
@@ -26,7 +26,7 @@ const CategoriesScreen = props => {
 };
 
 export const categoriesScreenOptions = {
-    title: 'Meal Categories', //insted of headerTitle of react navigation 4
+    title: 'Meal Categories', //same as the headerTitle of react navigation 4
 };
 
 const styles = StyleSheet.create({
