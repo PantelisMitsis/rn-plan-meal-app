@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
 import * as Font from 'expo-font';
 import AppLoading from 'expo-app-loading';
-import { enableScreens } from 'react-native-screens';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import MealsNavigator from './navigation/MealsNavigator';
+import { StatusBar } from 'expo-status-bar';
+import CategoriesScreen from './screens/CategoriesScreen';
 
-enableScreens();
+const Stack = createNativeStackNavigator();
 
 const fetchFonts = () => {
   return Font.loadAsync({
@@ -28,5 +30,14 @@ export default function App() {
     );
   }
 
-  return <MealsNavigator />;
+  return (
+    <>
+      <StatusBar style='light'></StatusBar>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="MealsCategories" component={CategoriesScreen}/>
+        </Stack.Navigator>
+      </NavigationContainer>;
+    </>
+  );
 }

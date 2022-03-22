@@ -1,28 +1,20 @@
 import React from 'react';
-import { StyleSheet, 
-    Text, 
-    View, 
-    TouchableOpacity, 
-    Platform, 
-    TouchableNativeFeedback } from 'react-native';
+import {
+    StyleSheet,
+    Text,
+    View,
+    Platform,
+    Pressable
+} from 'react-native';
 
-
-
-const CategoryGridTile = props => {
-    let TouchableComponent = TouchableOpacity;
-
-    if (Platform.OS === 'android' && Platform.Version >= 21) {
-        TouchableComponent = TouchableNativeFeedback;
-    }
+function CategoryGridTile({ title, color }) {
     return (
         <View style={styles.gridItem}>
-            <TouchableComponent
-                style={{ flex: 1 }}
-                onPress={props.onSelect}>
-                <View style={{ ...styles.container, ...{ backgroundColor: props.color } }}>
-                    <Text style={styles.title} numberOfLines={2}>{props.title}</Text>
+            <Pressable android_ripple={{color: '#ccc'}} style={({pressed}) =>[styles.button, pressed ? styles.buttonPressed : null ]}>
+                <View style={[styles.container, { backgroundColor: color }]}>
+                    <Text>{title}</Text>
                 </View>
-            </TouchableComponent>
+            </Pressable>
         </View>
     );
 };
@@ -33,11 +25,19 @@ const styles = StyleSheet.create({
         margin: 15,
         height: 150,
         borderRadius: 10,
-        overflow: 'hidden'
+        //elevation: 4,
+        overflow: Platform.OS === 'android' ? 'hidden' : 'visible'
+    },
+    button: {
+        flex: 1
+    },
+    buttonPressed: {
+        opacity: 0.5
     },
     container: {
         flex: 1,
         borderRadius: 10,
+        backgroundColor: 'white', //this attribute is for the IOS. It needw it to display shadow effects
         shadowColor: 'black',
         shadowOpacity: 0.26,
         shadowOffset: { width: 0, heigth: 2 },
