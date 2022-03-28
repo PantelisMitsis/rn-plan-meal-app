@@ -1,33 +1,37 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, ImageBackground } from 'react-native';
+import { StyleSheet, Text, View, Pressable, ImageBackground } from 'react-native';
 
 
-const MealItem = props => {
+function MealItem({ title, imageUrl, duration, complexity, affordability }) {
     return (
         <View style={styles.mealItem}>
-            <TouchableOpacity onPress={props.onSelectMeal}>
+            <Pressable
+                android_ripple={{ color: '#ccc' }}
+                style={({ pressed }) =>
+                    pressed ? styles.buttonPressed : null}
+            >
                 <View>
                     <View style={{ ...styles.mealRow, ...styles.mealHeader }}>
-                        <ImageBackground source={{ uri: props.image }} style={styles.bgImage} >
-                            <View style={styles.titleCOntainer}>
-                                <Text style={styles.title} numberOfLines={1}>{props.title}</Text>
+                        <ImageBackground source={{ uri: imageUrl }} style={styles.bgImage} >
+                            <View style={styles.titleContainer}>
+                                <Text style={styles.title} numberOfLines={1}>{title}</Text>
                             </View>
                         </ImageBackground>
                     </View>
                     <View style={{ ...styles.mealRow, ...styles.mealDetail }}>
-                        <Text>{props.duration}m</Text>
-                        <Text>{props.complexity.toUpperCase()}</Text>
-                        <Text>{props.affordability.toUpperCase()}</Text>
+                        <Text>{duration}m</Text>
+                        <Text>{complexity.toUpperCase()}</Text>
+                        <Text>{affordability.toUpperCase()}</Text>
                     </View>
                 </View>
-            </TouchableOpacity>
+            </Pressable>
         </View>
     );
 };
 
 
 const styles = StyleSheet.create({
-    titleCOntainer: {
+    titleContainer: {
         backgroundColor: 'rgba(0,0,0,0.5)',
         paddingVertical: 5,
         paddingHorizontal: 12,
@@ -61,6 +65,9 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         height: '10%'
+    },
+    buttonPressed: {
+        opacity: 0.5
     }
 });
 

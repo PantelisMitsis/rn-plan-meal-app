@@ -5,19 +5,24 @@ import { CATEGORIES } from '../data/dummy-data';
 import CategoryGridTile from '../components/CategoryGridTile';
 
 
-function CategoriesScreen () {
 
-    const renderGridItem = (itemData) => {
+
+function CategoriesScreen({ navigation }) {
+    function renderGridItem(itemData) {
+        function pressHandler() {
+            navigation.navigate('MealsOverview', {
+                categoryId: itemData.item.id,
+                
+            });
+        }
+
         return (
             <CategoryGridTile
                 title={itemData.item.title}
                 color={itemData.item.color}
-                onSelect={() => {
-                    props.navigation.navigate('CategoryMeals', {
-                        categoryId: itemData.item.id
-                    });
-                }}
-            />);
+                onPress={pressHandler}
+            />
+        );
     };
 
     return (
