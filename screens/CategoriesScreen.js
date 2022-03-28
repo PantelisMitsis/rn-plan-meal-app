@@ -11,8 +11,7 @@ function CategoriesScreen({ navigation }) {
     function renderGridItem(itemData) {
         function pressHandler() {
             navigation.navigate('MealsOverview', {
-                categoryId: itemData.item.id,
-                
+                categoryId: itemData.item.id               
             });
         }
 

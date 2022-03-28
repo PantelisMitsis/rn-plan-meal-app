@@ -20,14 +20,15 @@ function MealsOverviewScreen({ route, navigation }) {
     }, [catId, navigation]);
 
 
-    function renderMealItem(itemData) {
+    function renderMealDetail(itemData) {
         return (<MealItem
+            id={itemData.item.id}
             title={itemData.item.title}
             imageUrl={itemData.item.imageUrl}
             duration={itemData.item.duration}
             complexity={itemData.item.complexity}
             affordability={itemData.item.affordability}
-            onSelectMeal={() => { }} />
+            onSelectMeal={() => {}} />
         );
     }
 
@@ -36,7 +37,7 @@ function MealsOverviewScreen({ route, navigation }) {
             <FlatList
                 data={displayedMeals}
                 keyExtractor={(item, index) => item.id}
-                renderItem={renderMealItem}
+                renderItem={renderMealDetail}
                 style={{ width: '100%' }}
             />
         </View>

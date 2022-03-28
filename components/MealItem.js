@@ -1,14 +1,25 @@
 import React from 'react';
 import { StyleSheet, Text, View, Pressable, ImageBackground } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import MealDetails from './MealDetails';
 
+function MealItem({ id, title, imageUrl, duration, complexity, affordability }) {
+    const navigation = useNavigation();
 
-function MealItem({ title, imageUrl, duration, complexity, affordability }) {
+    function selecteMealItemHandler(){
+        navigation.navigate('MealDetails', {
+        mealId: id
+    });
+    }
+    
+    
     return (
         <View style={styles.mealItem}>
             <Pressable
                 android_ripple={{ color: '#ccc' }}
                 style={({ pressed }) =>
                     pressed ? styles.buttonPressed : null}
+                onPress={selecteMealItemHandler}
             >
                 <View>
                     <View style={{ ...styles.mealRow, ...styles.mealHeader }}>
@@ -18,11 +29,7 @@ function MealItem({ title, imageUrl, duration, complexity, affordability }) {
                             </View>
                         </ImageBackground>
                     </View>
-                    <View style={{ ...styles.mealRow, ...styles.mealDetail }}>
-                        <Text>{duration}m</Text>
-                        <Text>{complexity.toUpperCase()}</Text>
-                        <Text>{affordability.toUpperCase()}</Text>
-                    </View>
+                    <MealDetails duration={duration} complexity={complexity} affordability={affordability} />
                 </View>
             </Pressable>
         </View>
@@ -59,12 +66,6 @@ const styles = StyleSheet.create({
     },
     mealHeader: {
         height: '90%'
-    },
-    mealDetail: {
-        paddingHorizontal: 15,
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        height: '10%'
     },
     buttonPressed: {
         opacity: 0.5
