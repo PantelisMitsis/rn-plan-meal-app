@@ -11,7 +11,7 @@ function CategoriesScreen({ navigation }) {
     function renderGridItem(itemData) {
         function pressHandler() {
             navigation.navigate('MealsOverview', {
-                categoryId: itemData.item.id               
+                categoryId: itemData.item.id
             });
         }
 
@@ -30,7 +30,7 @@ function CategoriesScreen({ navigation }) {
 };
 
 export const categoriesScreenOptions = {
-    title: 'Meal Categories', //same as the headerTitle of react navigation 4
+    title: 'Meal Categories',
 };
 
 const styles = StyleSheet.create({

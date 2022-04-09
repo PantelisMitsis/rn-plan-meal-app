@@ -7,7 +7,7 @@ import List from '../components/MealDetail/List';
 import Subtitle from '../components/MealDetail/Subtitle';
 import MealDetails from '../components/MealDetails';
 import { MEALS } from '../data/dummy-data';
-import {addFavorite, removeFavorite} from '../store/redux/favorites';
+import { addFavorite, removeFavorite } from '../store/redux/favorites';
 //import {FavoritesContext} from '../store/context/favorites-context';
 
 function MealDetailsScreen({ route, navigation }) {
@@ -21,13 +21,13 @@ function MealDetailsScreen({ route, navigation }) {
 
     const mealIsFavorite = favoriteMealIds.includes(mealId);
 
-    function changeFavoriteStatusHandler(){
-        if(mealIsFavorite){
+    function changeFavoriteStatusHandler() {
+        if (mealIsFavorite) {
             //favoriteMealsCtx.removeFavorite(mealId);
-            dispatch(removeFavorite({id: mealId}));
-        } else{
+            dispatch(removeFavorite({ id: mealId }));
+        } else {
             //favoriteMealsCtx.addFavorite(mealId);
-            dispatch(addFavorite({id: mealId}));
+            dispatch(addFavorite({ id: mealId }));
 
         }
     }
@@ -35,10 +35,10 @@ function MealDetailsScreen({ route, navigation }) {
     useLayoutEffect(() => {
         navigation.setOptions({
             headerRight: () => {
-                return <IconButton 
-                onPress={changeFavoriteStatusHandler}
-                icon={mealIsFavorite ? 'star': 'star-outline'}
-                color= 'white'
+                return <IconButton
+                    onPress={changeFavoriteStatusHandler}
+                    icon={mealIsFavorite ? 'star' : 'star-outline'}
+                    color='white'
                 />
             }
         });

@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         borderRadius: 10,
-        backgroundColor: 'white', //this attribute is for the IOS. It needw it to display shadow effects
+        backgroundColor: 'white', //this attribute is for the IOS. It needs it to display shadow effects
         shadowColor: 'black',
         shadowOpacity: 0.26,
         shadowOffset: { width: 0, heigth: 2 },

@@ -1,8 +1,8 @@
-import {View, FlatList, StyleSheet} from 'react-native';
+import { View, FlatList, StyleSheet } from 'react-native';
 
 import MealItem from './MealItem';
 
-function MealsList({items}) {
+function MealsList({ items }) {
 
   function renderMealDetail(itemData) {
     return (<MealItem
@@ -30,10 +30,10 @@ function MealsList({items}) {
 
 const styles = StyleSheet.create({
   screen: {
-      flex: 1,
-      padding: 16,
-      justifyContent: 'center',
-      alignItems: 'center'
+    flex: 1,
+    padding: 16,
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 });
 

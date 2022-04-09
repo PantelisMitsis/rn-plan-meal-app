@@ -1,10 +1,10 @@
-import {View, Text, StyleSheet} from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
-function List({data}) {
+function List({ data }) {
   return (
     data.map((dataPoint) => (
       <View style={styles.listItem} key={dataPoint}>
-      <Text style={styles.itemText}>{dataPoint}</Text>
+        <Text style={styles.itemText}>{dataPoint}</Text>
       </View>
     ))
   );
@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 12,
     backgroundColor: '#e2b497'
   },
-  itemText:{
+  itemText: {
     color: '#351401',
     textAlign: 'center'
   }
